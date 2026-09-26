@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurelia Inn HomeStay — Stay, Relax, Explore Kashi</title>
+<meta name="description" content="A peaceful homestay in Nagwa, Varanasi — comfortable rooms, riverside camping and campfire evenings, minutes from the ghats and Kashi Vishwanath.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="container navwrap">
+    <a href="#top" class="brand">
+      <span class="logo-plate"><img src="assets/logo.png" alt="Aurelia Inn HomeStay logo"></span>
+      <span class="word"><b>Aurelia Inn</b><span>HOMESTAY</span></span>
+    </a>
+    <nav class="mainnav" id="mainnav">
+      <a href="#top">Home</a>
+      <a href="#welcome">About</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#camping">Experiences</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="#booking">Contact</a>
+      <a href="#booking" class="nav-book">Book / Enquire</a>
+    </nav>
+    <div class="navactions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a href="#booking" class="btn">Book / Enquire</a>
+      <button class="navburger" id="navburger" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">☰</button>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <img src="assets/hero-banner.jpg" alt="Ganga ghats at sunset with Shri Kashi Vishwanath and Maa Vindhyavasini, Aurelia Inn HomeStay — A Home Away From Home in Kashi">
+</section>
+
+<section class="welcome reveal" id="welcome">
+  <img class="watermark" src="assets/decor/kashi_line.png" alt="">
+  <div class="container">
+    <img class="lotus-mark" src="assets/decor/lotus.png" alt="">
+    <p class="eyebrow">WELCOME TO AURELIA INN HOMESTAY</p>
+    <h2>More than a stay, it's a feeling</h2>
+    <p class="lede center">A peaceful and comfortable stay in the heart of Varanasi. Located in Nagwa, Lanka, our homestay offers a perfect blend of convenience, comfort and warm hospitality — ideal for pilgrims, tourists, students, and families visiting Kashi.</p>
+    <img class="script-img" src="assets/decor/kashi_calls.png" alt="Kashi Calls">
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">OUR ROOMS</p>
+      <h2>Well-furnished, clean and comfortable</h2>
+      <p class="lede center">Rooms sized and priced for how you're travelling — simple, tidy stays or a little extra space to spread out.</p>
+    </div>
+    <div class="room-grid">
+      <div class="room-card reveal">
+        <div class="room-visual">
+          <img src="assets/rooms/room-standard-1.jpg" alt="Standard Room bed with floral bedspread">
+        </div>
+        <div class="room-body">
+          <h3>Standard Room</h3>
+          <p>Comfortable and budget friendly — everything you need for an easy stay near the ghats.</p>
+          <div class="room-tags">
+            <span><span class="icon-badge sm"><img src="assets/icons/AC.png" alt="" onerror="this.style.opacity=0"></span>AC</span>
+            <span><span class="icon-badge sm"><img src="assets/icons/wifi.png" alt="" onerror="this.style.opacity=0"></span>Wi-Fi</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-visual">
+          <img src="assets/rooms/room-deluxe-1.jpg" alt="Deluxe Room bed with geometric bedspread and wardrobe">
+        </div>
+        <div class="room-body">
+          <h3>Deluxe Room</h3>
+          <p>More space, more comfort — a roomier option for families or a longer stay in the city.</p>
+          <div class="room-tags">
+            <span><span class="icon-badge sm"><img src="assets/icons/AC.png" alt="" onerror="this.style.opacity=0"></span>AC</span>
+            <span><span class="icon-badge sm"><img src="assets/icons/wifi.png" alt="" onerror="this.style.opacity=0"></span>Wi-Fi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="camping" id="camping">
+  <div class="camping-bg">
+    <img src="assets/camping-bg.jpg" alt="Riverside camping and campfire evening near the Varanasi ghats">
+    <div class="container">
+      <div class="camping-content reveal">
+        <p class="eyebrow">CAMPING &amp; CAMPFIRE EXPERIENCE</p>
+        <h2>Unwind under the open sky</h2>
+        <p>Enjoy a peaceful camping experience with bonfire, good conversation and the serene vibes of Kashi, just steps from where you're staying.</p>
+        <div class="camp-feats">
+          <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 21 12 3l8 18"/></svg>Camping Area</div>
+          <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2c2 4-2 5-1 9 3-1 4-3 4-3 1 3 0 6-3 8-4-2-6-6-3-11 1 1 2 1.5 3-3Z"/></svg>Campfire Evenings</div>
+          <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2 8 10h3l-2 6 7-9h-3l3-5z"/></svg>Nature Vibes</div>
+          <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><path d="M2 20c.5-3 2.7-5 6-5s5.5 2 6 5M10 20c.5-3 2.7-5 6-5s5.5 2 6 5"/></svg>Perfect for Groups</div>
+        </div>
+        <a href="#booking" class="btn ghost">Experience More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="amenities">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">OUR AMENITIES</p>
+      <h2>Everything you need for a peaceful stay</h2>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/wifi.png" alt="" onerror="this.style.opacity=0"></div><p>Free Wi-Fi</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/AC.png" alt="" onerror="this.style.opacity=0"></div><p>Air Conditioning</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/bed.png" alt="" onerror="this.style.opacity=0"></div><p>Clean Rooms</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/parking.png" alt="" onerror="this.style.opacity=0"></div><p>Parking Space</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/location.png" alt="" onerror="this.style.opacity=0"></div><p>Prime Location</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/Leaf.png" alt="" onerror="this.style.opacity=0"></div><p>Peaceful Environment</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/group.png" alt="" onerror="this.style.opacity=0"></div><p>Family Friendly</p></div>
+      <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/food.png" alt="" onerror="this.style.opacity=0"></div><p>Homely Food (on request)</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">GALLERY</p>
+      <h2>Moments from Aurelia Inn HomeStay</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <img class="g1" src="assets/hero-banner.jpg" alt="Sunset over the Varanasi ghats">
+      <img src="assets/rooms/room-deluxe-2.jpg" alt="Deluxe Room interior">
+      <img src="assets/rooms/lounge-1.jpg" alt="Living room lounge seating area">
+      <img src="assets/camping-bg.jpg" alt="Campfire set up by the river at night">
+      <img src="assets/rooms/room-standard-2.jpg" alt="Standard Room interior">
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="container booking-wrap">
+    <div class="booking-text reveal">
+      <p class="eyebrow">BOOK / ENQUIRE</p>
+      <h2>Plan your stay in Kashi</h2>
+      <p class="lede">Fill out the short enquiry form and we'll get back to you to confirm dates and answer anything you're wondering about — rooms, camping, or getting around Varanasi.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>Share your check-in and check-out dates and guest count</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>We reply by phone or email, usually within a few hours</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4c0 3-4 8-4 8s-4-5-4-8a4 4 0 0 1 4-4Z"/><circle cx="12" cy="7" r="1.3" fill="currentColor" stroke="none"/></svg>Mention any special requests — we'll do what we can</li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIA0T2Iv5eHdynxZHOwztjOir7AZb-HlKdb3H47EQ4hXWM5Q/viewform?usp=dialog" target="_blank" rel="noopener" class="btn outline">Open form in a new tab ↗</a>
+    </div>
+    <div class="form-frame reveal">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScIA0T2Iv5eHdynxZHOwztjOir7AZb-HlKdb3H47EQ4hXWM5Q/viewform?embedded=true" title="Aurelia Inn HomeStay booking enquiry form">Loading form…</iframe>
+      <p class="fallback">Form not loading? <a href="https://docs.google.com/forms/d/e/1FAIpQLScIA0T2Iv5eHdynxZHOwztjOir7AZb-HlKdb3H47EQ4hXWM5Q/viewform?usp=dialog" target="_blank" rel="noopener" class="form-direct-link">Open it directly</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="container loc-wrap">
+    <div class="loc-info reveal">
+      <p class="eyebrow">OUR LOCATION</p>
+      <h2>Find us in Nagwa, Lanka</h2>
+      <div class="loc-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <div><h4>Address</h4><p>Plot 4, Shivpuri Colony, Nagwa, Lanka,<br>Near Vama Hospital, Varanasi, Uttar Pradesh</p></div>
+      </div>
+      <div class="loc-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+        <div><h4>Phone</h4><a href="tel:+917309069820">073090 69820</a></div>
+      </div>
+      <div class="loc-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>
+        <div><h4>Email</h4><a href="mailto:aureliainnhomestay@gmail.com">aureliainnhomestay@gmail.com</a></div>
+      </div>
+      <a class="loc-item loc-whatsapp" href="https://wa.me/917309069820" target="_blank" rel="noopener">
+        <div class="icon-badge sm"><img src="assets/icons/whatsapp.png" alt="" onerror="this.style.opacity=0"></div>
+        <div>
+          <h4>WhatsApp</h4>
+          <span class="wa-cta">Chat with us</span>
+        </div>
+      </a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=25.2790414,83.0066989" target="_blank" rel="noopener" class="btn btn-directions">Get Directions</a>
+    </div>
+    <div class="map-embed reveal">
+      <iframe src="https://www.google.com/maps?q=25.2790414,83.0066989&z=17&output=embed" title="Map showing Aurelia Inn HomeStay in Nagwa, Varanasi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Aurelia Inn HomeStay logo">
+        <div>
+          <div class="footer-name">Aurelia Inn HomeStay</div>
+          <p>Stay · Relax · Explore Kashi</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h5>Explore</h5>
+          <a href="#welcome">About</a>
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#camping">Experiences</a>
+        </div>
+        <div>
+          <h5>Visit</h5>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Location</a>
+          <a href="#booking">Book / Enquire</a>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <a href="tel:+917309069820">073090 69820</a>
+          <a href="mailto:aureliainnhomestay@gmail.com">aureliainnhomestay@gmail.com</a>
+          <a href="https://wa.me/917309069820" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Aurelia Inn HomeStay. All rights reserved. Made with ♥ in Kashi.</div>
+      <div class="footer-mahad">
+        <img src="assets/decor/har_har_mahadev.png" alt="Har Har Mahadev">
+        <span class="quote">"Atithi Devo Bhava"</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Theme: respect saved choice, else system preference
+  const root = document.documentElement;
+  const saved = localStorage.getItem('aurelia-theme');
+  if(saved){ root.setAttribute('data-theme', saved); }
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches){ root.setAttribute('data-theme','dark'); }
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('aurelia-theme', next);
+  });
+
+  // Mobile nav
+  const nav = document.getElementById('mainnav');
+  const burger = document.getElementById('navburger');
+  const setNavOpen = (open) => {
+    nav.classList.toggle('open', open);
+    document.body.classList.toggle('nav-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  burger.addEventListener('click', () => setNavOpen(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNavOpen(false)));
+  window.addEventListener('resize', () => { if(window.innerWidth > 980) setNavOpen(false); });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

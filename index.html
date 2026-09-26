@@ -9,9 +9,282 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --green-950:#0e2620;
+    --green-900:#123a2e;
+    --green-800:#1a4a3a;
+    --gold-500:#c79a3d;
+    --gold-400:#d8b563;
+    --cream-100:#faf6ec;
+    --cream-200:#f3ecd9;
+    --cream-300:#e9dfc4;
+    --ink:#1c2b23;
+    --ink-soft:#4b5a51;
+
+    --bg:var(--cream-100);
+    --bg-alt:var(--cream-200);
+    --surface:#ffffff;
+    --surface-2:var(--cream-200);
+    --text:var(--ink);
+    --text-soft:var(--ink-soft);
+    --header-bg:var(--green-950);
+    --header-text:var(--cream-100);
+    --accent:var(--gold-500);
+    --accent-strong:#a97e28;
+    --border:rgba(28,43,35,0.14);
+    --shadow:0 18px 40px rgba(18,58,46,0.12);
+    --icon-invert:0;
+  }
+  [data-theme="dark"]{
+    --bg:#070f0c;
+    --bg-alt:#0b1613;
+    --surface:#152a22;
+    --surface-2:#1b332a;
+    --text:#f4eeda;
+    --text-soft:#a7b6ab;
+    --header-bg:#050c09;
+    --header-text:#f4eeda;
+    --accent:var(--gold-400);
+    --accent-strong:#f0cd85;
+    --border:rgba(232,199,120,0.22);
+    --shadow:0 18px 44px rgba(0,0,0,0.6);
+    --icon-invert:1;
+    color-scheme:dark;
+  }
+  body{background-image:none;}
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease, color .3s ease;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif; font-weight:600; margin:0 0 .4em; color:var(--text);}
+  .container{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{font-size:.78rem; letter-spacing:.14em; color:var(--accent-strong); margin-bottom:.5em;}
+  .lede{max-width:640px; color:var(--text-soft); font-size:1.05rem;}
+  section{padding:88px 0;}
+  .center{text-align:center; margin-left:auto; margin-right:auto;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 30px; border-radius:3px;
+    background:var(--accent); color:var(--green-950);
+    font-family:'Jost',sans-serif; font-weight:500; font-size:.92rem;
+    letter-spacing:.03em; border:1px solid var(--accent);
+    cursor:pointer; transition:transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn:hover{background:transparent; color:var(--accent); transform:translateY(-2px);}
+  .btn.ghost{background:transparent; color:var(--header-text); border-color:rgba(255,255,255,.4);}
+  .btn.ghost:hover{background:rgba(255,255,255,.08); color:var(--header-text);}
+  .btn.outline{background:transparent; color:var(--accent-strong); border-color:var(--accent);}
+  .btn.outline:hover{background:var(--accent); color:var(--green-950);}
+
+  /* ---------- Top strip ---------- */
+  .topstrip{
+    background:var(--green-950); color:var(--cream-300);
+    font-size:.74rem; padding:5px 0;
+  }
+  [data-theme="dark"] .topstrip{background:#050d0a;}
+  .topstrip .container{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .topstrip a{opacity:.9;}
+  .topstrip a:hover{color:var(--gold-400);}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--header-bg); color:var(--header-text);
+  }
+  .navwrap{display:flex; align-items:center; justify-content:space-between; padding:8px 0;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand .logo-plate{
+    background:linear-gradient(160deg,var(--cream-100),var(--cream-200));
+    border-radius:10px; padding:6px 10px; display:flex; align-items:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+  }
+  .brand img{height:42px; width:auto; display:block;}
+  .brand .word{font-family:'Cormorant Garamond',serif;}
+  .brand .word b{display:block; font-size:1.4rem; color:var(--header-text); line-height:1.1;}
+  .brand .word span{display:block; font-size:.72rem; letter-spacing:.18em; color:var(--gold-400);}
+  nav.mainnav{display:flex; align-items:center; gap:30px;}
+  nav.mainnav a{font-size:.92rem; letter-spacing:.02em; opacity:.9; position:relative; padding:4px 0;}
+  nav.mainnav a:hover{opacity:1; color:var(--gold-400);}
+  .navactions{display:flex; align-items:center; gap:14px;}
+  .theme-toggle{
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.25); background:transparent; color:var(--header-text);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .theme-toggle svg{width:18px; height:18px;}
+  .theme-toggle .moon{display:none;}
+  [data-theme="dark"] .theme-toggle .sun{display:none;}
+  [data-theme="dark"] .theme-toggle .moon{display:block;}
+  .navburger{display:none; background:none; border:none; color:var(--header-text); font-size:1.6rem; cursor:pointer;}
+
+  @media (max-width: 900px){
+    nav.mainnav{
+      position:fixed; inset:64px 0 0 0; background:var(--header-bg);
+      flex-direction:column; align-items:flex-start; gap:0;
+      padding:10px 24px 30px; transform:translateY(-110%); opacity:0;
+      transition:transform .3s ease, opacity .3s ease; pointer-events:none;
+    }
+    nav.mainnav.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+    nav.mainnav a{padding:12px 0; width:100%; border-bottom:1px solid rgba(255,255,255,.08);}
+    .navburger{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; background:var(--green-950);}
+  .hero img{width:100%; height:auto; display:block; opacity:.96;}
+
+  /* ---------- Welcome ---------- */
+  .welcome{position:relative; overflow:hidden;}
+  .welcome .container{max-width:760px; text-align:center; position:relative; z-index:1;}
+  .welcome .watermark{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:120%; max-width:1100px; opacity:.06; z-index:0; pointer-events:none;
+  }
+  [data-theme="dark"] .welcome .watermark{opacity:.08; filter:invert(1);}
+  .welcome .lotus-mark{width:38px; height:38px; margin:0 auto 10px; opacity:.85;}
+  .welcome .script-img{max-width:220px; height:auto; margin:20px auto 0; display:block;}
+  [data-theme="dark"] .welcome .script-img{filter:brightness(1.15);}
+
+  /* ---------- Rooms ---------- */
+  .rooms{background:var(--bg-alt);}
+  .section-head{max-width:640px; margin:0 auto 46px; text-align:center;}
+  .room-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  @media (max-width:760px){ .room-grid{grid-template-columns:1fr;} }
+  .room-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:4px;
+    overflow:hidden; box-shadow:var(--shadow);
+  }
+  .room-visual{
+    height:220px; overflow:hidden;
+  }
+  .room-visual img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .room-card:hover .room-visual img{transform:scale(1.05);}
+  .room-body{padding:26px 28px 30px;}
+  .room-body h3{font-size:1.4rem;}
+  .room-body p{color:var(--text-soft); font-size:.94rem; margin:.3em 0 1em;}
+  .room-tags{display:flex; gap:16px; font-size:.82rem; color:var(--text-soft); align-items:center;}
+  .room-tags span{display:flex; align-items:center; gap:6px;}
+  .room-tags svg{width:15px; height:15px; stroke:var(--accent-strong);}
+  .room-tags .icon-badge.sm{width:16px; height:16px; margin:0;}
+  .room-tags .icon-badge.sm img{width:16px; height:16px;}
+
+  /* ---------- Camping ---------- */
+  .camping{position:relative; color:#f4efe0; padding:0;}
+  .camping-bg{position:relative; min-height:520px; display:flex; align-items:center;}
+  .camping-bg img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .camping-bg::after{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(6,14,11,.96) 15%, rgba(6,14,11,.78) 55%, rgba(6,14,11,.35) 100%);
+  }
+  .camping-content{position:relative; z-index:2; padding:70px 0; max-width:480px;}
+  .camping-content .eyebrow{color:var(--gold-400); text-shadow:0 2px 10px rgba(0,0,0,.5);}
+  .camping-content h2{color:#fff; font-size:2.3rem; text-shadow:0 2px 14px rgba(0,0,0,.55);}
+  .camping-content p{color:#e9e4d2; font-size:1rem; text-shadow:0 1px 8px rgba(0,0,0,.5);}
+  .camp-feats{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:26px 0 30px;}
+  .camp-feats .f{display:flex; align-items:center; gap:10px; font-size:.9rem; color:#f4efe0;}
+  .camp-feats svg{width:20px; height:20px; stroke:var(--gold-400); flex-shrink:0;}
+
+  /* ---------- Amenities ---------- */
+  .amenities-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+  }
+  @media (max-width:760px){ .amenities-grid{grid-template-columns:repeat(2,1fr);} }
+  .amenity{
+    border:1px solid var(--border); border-radius:4px; padding:26px 18px;
+    text-align:center; background:var(--surface); transition:border-color .2s ease, transform .2s ease, background .2s ease;
+  }
+  .amenity:hover{border-color:var(--accent); transform:translateY(-3px);}
+  .amenity svg{width:30px; height:30px; stroke:var(--accent-strong); margin-bottom:12px;}
+  .amenity p{margin:0; font-size:.88rem; color:var(--text-soft);}
+
+  /* Icon badges: swap in real cropped icons from the sheet at assets/icons/<name> */
+  .icon-badge{
+    width:44px; height:44px; border-radius:50%; margin:0 auto 12px;
+    background:var(--surface-2); display:flex; align-items:center; justify-content:center;
+  }
+  .icon-badge img{width:22px; height:22px; object-fit:contain; transition:opacity .2s ease;}
+  [data-theme="dark"] .icon-badge img{ filter:brightness(0) invert(1); opacity:.92; }
+  .icon-badge.sm{width:22px; height:22px; background:none; margin:2px 0 0; flex-shrink:0;}
+  .icon-badge.sm img{width:22px; height:22px;}
+
+  /* ---------- Gallery ---------- */
+  .gallery{background:var(--bg-alt);}
+  .gallery-grid{display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:1fr 1fr; gap:14px; height:440px;}
+  .gallery-grid img{width:100%; height:100%; object-fit:cover; border-radius:4px;}
+  .gallery-grid .g1{grid-row:1/3;}
+  @media (max-width:760px){
+    .gallery-grid{grid-template-columns:1fr 1fr; grid-template-rows:auto; height:auto;}
+    .gallery-grid .g1{grid-row:auto; grid-column:1/3; height:220px;}
+    .gallery-grid img{height:160px;}
+  }
+
+  /* ---------- Booking ---------- */
+  .booking{}
+  .booking-wrap{
+    display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start;
+  }
+  @media (max-width:900px){ .booking-wrap{grid-template-columns:1fr;} }
+  .booking-text .eyebrow{}
+  .booking-text ul{list-style:none; padding:0; margin:22px 0 28px; display:grid; gap:14px;}
+  .booking-text li{display:flex; gap:12px; align-items:flex-start; font-size:.94rem; color:var(--text-soft);}
+  .booking-text li svg{width:18px; height:18px; stroke:var(--accent-strong); flex-shrink:0; margin-top:2px;}
+  .form-frame{
+    border:1px solid var(--border); border-radius:6px; overflow:hidden;
+    background:var(--surface); box-shadow:var(--shadow);
+  }
+  .form-frame iframe{width:100%; height:560px; border:none; display:block; background:#fff;}
+  .form-frame .fallback{padding:18px 22px; font-size:.85rem; color:var(--text-soft); border-top:1px solid var(--border); text-align:center;}
+
+  /* ---------- Location ---------- */
+  .location{background:var(--bg-alt);}
+  .loc-wrap{display:grid; grid-template-columns:1fr 1.1fr; gap:40px; align-items:stretch;}
+  @media (max-width:900px){ .loc-wrap{grid-template-columns:1fr;} }
+  .loc-info{display:flex; flex-direction:column; gap:22px;}
+  .loc-item{display:flex; gap:14px;}
+  .loc-item svg{width:22px; height:22px; stroke:var(--accent-strong); flex-shrink:0; margin-top:2px;}
+  .loc-item h4{margin:0 0 4px; font-size:1.05rem;}
+  .loc-item p, .loc-item a{color:var(--text-soft); font-size:.92rem; margin:0;}
+  .map-embed{border-radius:6px; overflow:hidden; border:1px solid var(--border); min-height:340px; box-shadow:var(--shadow);}
+  .map-embed iframe{width:100%; height:100%; min-height:340px; border:0;}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--green-950); color:var(--cream-300); padding:56px 0 22px;}
+  [data-theme="dark"] footer.site{background:#050d0a;}
+  .footer-top{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.1);}
+  .footer-brand{display:flex; gap:12px; align-items:center; max-width:320px;}
+  .footer-brand img{height:44px;}
+  .footer-brand p{font-size:.82rem; color:rgba(250,246,236,.6); margin:.3em 0 0;}
+  .footer-links{display:flex; gap:60px; flex-wrap:wrap;}
+  .footer-links h5{font-family:'Cormorant Garamond',serif; color:var(--gold-400); font-size:1rem; margin:0 0 14px; font-weight:600;}
+  .footer-links a{display:block; font-size:.87rem; color:rgba(250,246,236,.75); margin-bottom:9px;}
+  .footer-links a:hover{color:var(--gold-400);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:20px; font-size:.78rem; color:rgba(250,246,236,.5);}
+  .footer-bottom .quote{color:var(--gold-400); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.95rem;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+</style>
 </head>
 <body>
+
+<div class="topstrip">
+  <div class="container">
+    <div>📍 Plot 4, Shivpuri Colony, Nagwa, Lanka, Near Vama Hospital, Varanasi &nbsp; | &nbsp; 📞 <a href="tel:+917309069820">073090 69820</a></div>
+  </div>
+</div>
 
 <header class="site">
   <div class="container navwrap">
@@ -28,7 +301,6 @@
       <a href="#gallery">Gallery</a>
       <a href="#location">Location</a>
       <a href="#booking">Contact</a>
-      <a href="#booking" class="nav-book">Book / Enquire</a>
     </nav>
     <div class="navactions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -36,7 +308,7 @@
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
       </button>
       <a href="#booking" class="btn">Book / Enquire</a>
-      <button class="navburger" id="navburger" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">☰</button>
+      <button class="navburger" id="navburger" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>
@@ -44,7 +316,7 @@
 <div id="top"></div>
 
 <section class="hero">
-  <img src="assets/rooms/campfire.jpg" alt="Ganga ghats at sunset with Shri Kashi Vishwanath and Maa Vindhyavasini, Aurelia Inn HomeStay — A Home Away From Home in Kashi">
+  <img src="assets/hero-banner.jpg" alt="Ganga ghats at sunset with Shri Kashi Vishwanath and Maa Vindhyavasini, Aurelia Inn HomeStay — A Home Away From Home in Kashi">
 </section>
 
 <section class="welcome reveal" id="welcome">
@@ -52,7 +324,7 @@
   <div class="container">
     <img class="lotus-mark" src="assets/decor/lotus.png" alt="">
     <p class="eyebrow">WELCOME TO AURELIA INN HOMESTAY</p>
-    <h2>More than a stay, it's a feeling</h2>
+    <h2 style="font-size:2.2rem;">More than a stay, it's a feeling</h2>
     <p class="lede center">A peaceful and comfortable stay in the heart of Varanasi. Located in Nagwa, Lanka, our homestay offers a perfect blend of convenience, comfort and warm hospitality — ideal for pilgrims, tourists, students, and families visiting Kashi.</p>
     <img class="script-img" src="assets/decor/kashi_calls.png" alt="Kashi Calls">
   </div>
@@ -62,7 +334,7 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">OUR ROOMS</p>
-      <h2>Well-furnished, clean and comfortable</h2>
+      <h2 style="font-size:2rem;">Well-furnished, clean and comfortable</h2>
       <p class="lede center">Rooms sized and priced for how you're travelling — simple, tidy stays or a little extra space to spread out.</p>
     </div>
     <div class="room-grid">
@@ -120,7 +392,7 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">OUR AMENITIES</p>
-      <h2>Everything you need for a peaceful stay</h2>
+      <h2 style="font-size:2rem;">Everything you need for a peaceful stay</h2>
     </div>
     <div class="amenities-grid">
       <div class="amenity reveal"><div class="icon-badge"><img src="assets/icons/wifi.png" alt="" onerror="this.style.opacity=0"></div><p>Free Wi-Fi</p></div>
@@ -139,10 +411,10 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">GALLERY</p>
-      <h2>Moments from Aurelia Inn HomeStay</h2>
+      <h2 style="font-size:2rem;">Moments from Aurelia Inn HomeStay</h2>
     </div>
     <div class="gallery-grid reveal">
-      <img class="g1" src="assets/hero-banner.jpg" alt="Sunset over the Varanasi ghats">
+      <img class="g1" src="assets/rooms/campfire.jpg" alt="Outdoor campfire and lounge courtyard in the evening">
       <img src="assets/rooms/room-deluxe-2.jpg" alt="Deluxe Room interior">
       <img src="assets/rooms/lounge-1.jpg" alt="Living room lounge seating area">
       <img src="assets/camping-bg.jpg" alt="Campfire set up by the river at night">
@@ -155,7 +427,7 @@
   <div class="container booking-wrap">
     <div class="booking-text reveal">
       <p class="eyebrow">BOOK / ENQUIRE</p>
-      <h2>Plan your stay in Kashi</h2>
+      <h2 style="font-size:2rem;">Plan your stay in Kashi</h2>
       <p class="lede">Fill out the short enquiry form and we'll get back to you to confirm dates and answer anything you're wondering about — rooms, camping, or getting around Varanasi.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>Share your check-in and check-out dates and guest count</li>
@@ -166,7 +438,7 @@
     </div>
     <div class="form-frame reveal">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScIA0T2Iv5eHdynxZHOwztjOir7AZb-HlKdb3H47EQ4hXWM5Q/viewform?embedded=true" title="Aurelia Inn HomeStay booking enquiry form">Loading form…</iframe>
-      <p class="fallback">Form not loading? <a href="https://docs.google.com/forms/d/e/1FAIpQLScIA0T2Iv5eHdynxZHOwztjOir7AZb-HlKdb3H47EQ4hXWM5Q/viewform?usp=dialog" target="_blank" rel="noopener" class="form-direct-link">Open it directly</a>.</p>
+      <p class="fallback">Form not loading? <a href="https://docs.google.com/forms/d/e/1FAIpQLScIA0T2Iv5eHdynxZHOwztjOir7AZb-HlKdb3H47EQ4hXWM5Q/viewform?usp=dialog" target="_blank" rel="noopener" style="color:var(--accent-strong);">Open it directly</a>.</p>
     </div>
   </div>
 </section>
@@ -175,7 +447,7 @@
   <div class="container loc-wrap">
     <div class="loc-info reveal">
       <p class="eyebrow">OUR LOCATION</p>
-      <h2>Find us in Nagwa, Lanka</h2>
+      <h2 style="font-size:2rem; margin-bottom:22px;">Find us in Nagwa, Lanka</h2>
       <div class="loc-item">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
         <div><h4>Address</h4><p>Plot 4, Shivpuri Colony, Nagwa, Lanka,<br>Near Vama Hospital, Varanasi, Uttar Pradesh</p></div>
@@ -188,14 +460,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>
         <div><h4>Email</h4><a href="mailto:aureliainnhomestay@gmail.com">aureliainnhomestay@gmail.com</a></div>
       </div>
-      <a class="loc-item loc-whatsapp" href="https://wa.me/917309069820" target="_blank" rel="noopener">
+      <div class="loc-item">
         <div class="icon-badge sm"><img src="assets/icons/whatsapp.png" alt="" onerror="this.style.opacity=0"></div>
-        <div>
-          <h4>WhatsApp</h4>
-          <span class="wa-cta">Chat with us</span>
-        </div>
-      </a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=25.2790414,83.0066989" target="_blank" rel="noopener" class="btn btn-directions">Get Directions</a>
+        <div><h4>WhatsApp</h4><a href="https://wa.me/917309069820" target="_blank" rel="noopener">Chat with us</a></div>
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=25.2790414,83.0066989" target="_blank" rel="noopener" class="btn" style="width:max-content;">Get Directions</a>
     </div>
     <div class="map-embed reveal">
       <iframe src="https://www.google.com/maps?q=25.2790414,83.0066989&z=17&output=embed" title="Map showing Aurelia Inn HomeStay in Nagwa, Varanasi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -209,7 +478,7 @@
       <div class="footer-brand">
         <img src="assets/logo.png" alt="Aurelia Inn HomeStay logo">
         <div>
-          <div class="footer-name">Aurelia Inn HomeStay</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--cream-100);">Aurelia Inn HomeStay</div>
           <p>Stay · Relax · Explore Kashi</p>
         </div>
       </div>
@@ -237,8 +506,8 @@
     </div>
     <div class="footer-bottom">
       <div>© <span id="year"></span> Aurelia Inn HomeStay. All rights reserved. Made with ♥ in Kashi.</div>
-      <div class="footer-mahad">
-        <img src="assets/decor/har_har_mahadev.png" alt="Har Har Mahadev">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <img src="assets/decor/har_har_mahadev.png" alt="Har Har Mahadev" style="height:26px; width:auto;">
         <span class="quote">"Atithi Devo Bhava"</span>
       </div>
     </div>
@@ -261,15 +530,8 @@
   // Mobile nav
   const nav = document.getElementById('mainnav');
   const burger = document.getElementById('navburger');
-  const setNavOpen = (open) => {
-    nav.classList.toggle('open', open);
-    document.body.classList.toggle('nav-open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  };
-  burger.addEventListener('click', () => setNavOpen(!nav.classList.contains('open')));
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNavOpen(false)));
-  window.addEventListener('resize', () => { if(window.innerWidth > 980) setNavOpen(false); });
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
   // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
